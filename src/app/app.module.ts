@@ -9,13 +9,17 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CityDetailsPage } from '../pages/city-details/city-details';
+import { CityListPage } from '../pages/city-list/city-list';
 
 @NgModule({
   declarations: [
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ListPage,
+    CityDetailsPage,
+    CityListPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ListPage,
+    CityDetailsPage,
+    CityListPage
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Météo par communes</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+      <button ion-item *ngFor="let city of cities" (click)="itemTapped($event, city)">
+        <ion-icon name="{{city.icon}}" item-left></ion-icon>
+        {{city.title}}
+        <div class="item-note" item-right>
+          {{city.temperature}}
+        </div>
+      </button>
+    </ion-list>
+</ion-content>

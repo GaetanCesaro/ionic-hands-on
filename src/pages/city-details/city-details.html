@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle *ngIf="!selectedCity">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Météo commune</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="selectedCity">
+    <h3 text-center>
+      {{selectedCity.title}}
+      <ion-icon [name]="selectedCity.icon"></ion-icon>
+    </h3>
+    <h4 text-center>
+        {{selectedCity.temperature}}
+    </h4>
+  </div>
+</ion-content>
