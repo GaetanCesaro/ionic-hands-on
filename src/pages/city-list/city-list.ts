@@ -23,7 +23,23 @@ export class CityListPage {
         title: "Koné",
         temperature: 25,
         icon: "partly-sunny",
-        forecast: []
+        forecast: [
+          {
+            day: "Vendredi",
+            temperature: 28,
+            icon: "sunny"
+          },
+          {
+            day: "Samedi",
+            temperature: 30,
+            icon: "sunny"
+          },
+          {
+            day: "Dimanche",
+            temperature: 26,
+            icon: "cloudy"
+          }
+        ]
       }
     ];
 
