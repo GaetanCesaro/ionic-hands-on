@@ -11,6 +11,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CityDetailsPage } from '../pages/city-details/city-details';
 import { CityListPage } from '../pages/city-list/city-list';
+import { CityService } from '../services/city.service';
+import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { CityListPage } from '../pages/city-list/city-list';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,7 +40,9 @@ import { CityListPage } from '../pages/city-list/city-list';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CityService,
+    HttpClient
   ]
 })
 export class AppModule {}
