@@ -7,15 +7,12 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
   <div *ngIf="selectedCity">
     <h3 text-center>
-      {{selectedCity.title}}
+      {{ selectedCity.title }}
       <ion-icon [name]="selectedCity.icon"></ion-icon>
     </h3>
-    <h4 text-center>
-        {{selectedCity.temperature}}
-    </h4>
+    <h4 text-center>{{ selectedCity.temperature }}°c</h4>
   </div>
 </ion-content>

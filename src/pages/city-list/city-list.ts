@@ -1,18 +1,18 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { CityModel } from '../../models/city.model';
-import { CityDetailsPage } from '../city-details/city-details';
-import { CityService } from '../../services/city.service';
+import { Component } from "@angular/core";
+import { NavController, NavParams } from "ionic-angular";
+import { CityModel } from "../../models/city.model";
+import { CityDetailsPage } from "../city-details/city-details";
+import { CityService } from "../../services/city.service";
 
 @Component({
-  selector: 'page-city-list',
-  templateUrl: 'city-list.html',
+  selector: "page-city-list",
+  templateUrl: "city-list.html"
 })
 export class CityListPage {
   cities: Array<CityModel>;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public cityService: CityService
   ) {
@@ -20,7 +20,7 @@ export class CityListPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CityListPage');
+    console.log("ionViewDidLoad CityListPage");
   }
 
   itemTapped(event, city) {
@@ -29,7 +29,7 @@ export class CityListPage {
     });
   }
 
-  initCities(){
+  initCities() {
     /*
     this.cities = [
       {
@@ -74,34 +74,25 @@ export class CityListPage {
 
     this.cities = [];
 
-    this.cityService.getCity("Nouméa").toPromise().then(city => this.addCity(city));
-    this.cityService.getCity("Poum").toPromise().then(city => this.addCity(city));
-    this.cityService.getCity("Koné").toPromise().then(city => this.addCity(city));
-    this.cityService.getCity("Koumac").toPromise().then(city => this.addCity(city));
+    this.addCity("Nouméa");
+    this.addCity("Dumbéa");
+    this.addCity("Mont-Dore");
+    this.addCity("Païta");
+    this.addCity("Koné");
+    this.addCity("Koumac");
+
+    // Erreur
+    this.addCity("Paris");
   }
 
-  addCity(city){
-    console.log(city);
-    var icon = "";
-    switch (city.weather[0].icon){
-      case "04d":
-        icon = "cloudy";
-        break;
-      
-      case "10d":
-        icon = "rainy";
-        break;
-    }
-
-    var cityModel = new CityModel();
-    
-    cityModel.title = city.name;
-    cityModel.temperature = Math.round(city.main.temp - 273.15);
-    cityModel.icon = icon;
-
-    console.log(cityModel);
-
-    this.cities.push(cityModel);
+  private addCity(cityName: string) {
+    this.cityService
+      .getCity(cityName)
+      .then(city => this.cities.push(city))
+      .catch(this.handleError);
   }
 
+  private handleError(error: any) {
+    console.error("An error occurred", error);
+  }
 }
