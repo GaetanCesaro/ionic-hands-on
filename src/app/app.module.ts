@@ -12,7 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { CityDetailsPage } from '../pages/city-details/city-details';
 import { CityListPage } from '../pages/city-list/city-list';
 import { CityService } from '../services/city.service';
-import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+import { HttpClient,  HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [

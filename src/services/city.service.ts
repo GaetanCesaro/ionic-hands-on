@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { CityModel } from "../models/city.model";
+import { JsonConvert, OperationMode, ValueCheckingMode } from "json2typescript";
 
 //https://api.openweathermap.org/data/2.5/weather?q=Koumac,nc&appid=846fe87f9f5971ad2a4cfe0cc866636d
 
@@ -9,8 +10,15 @@ import { CityModel } from "../models/city.model";
 export class CityService {
   private token = "846fe87f9f5971ad2a4cfe0cc866636d";
   private cityServiceUrl = `https://api.openweathermap.org/data/2.5/weather`;
+  private jsonConvert = new JsonConvert();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient
+  ) {
+    this.jsonConvert.operationMode = OperationMode.ENABLE; // print some debug data
+    this.jsonConvert.ignorePrimitiveChecks = false; // don't allow assigning number to string etc.
+    this.jsonConvert.valueCheckingMode = ValueCheckingMode.DISALLOW_NULL; // never allow null
+  }
 
   getCity(cityName: string): Promise<CityModel> {
     var cityQuery = `?q=${cityName},nc&appid=${this.token}`;
@@ -18,31 +26,16 @@ export class CityService {
       .get(this.cityServiceUrl + cityQuery)
       .toPromise<any>()
       .then(city => {
-        console.log(city);
 
-        var icon = "";
-        switch (city.weather[0].icon) {
-          case "04n":
-            icon = "cloudy-night";
-            break;
-
-          case "04d":
-            icon = "cloudy";
-            break;
-
-          case "10d":
-          case "10n":
-            icon = "rainy";
-            break;
+        // Mapping JSON du cityModel
+        let cityModel: CityModel;
+        try {
+            cityModel = this.jsonConvert.deserialize(city, CityModel);
+        } catch (e) {
+            this.handleError(e);
+        } finally {
+            return cityModel;
         }
-
-        var cityModel = new CityModel();
-
-        cityModel.title = city.name;
-        cityModel.temperature = Math.round(city.main.temp - 273.15);
-        cityModel.icon = icon;
-
-        return cityModel;
       })
       .catch(this.handleError);
   }
