@@ -11,7 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CityDetailsPage } from '../pages/city-details/city-details';
 import { CityListPage } from '../pages/city-list/city-list';
-import { CityService } from '../services/city.service';
+import { CityService } from '../providers/city.provider';
 import { HttpClient,  HttpClientModule } from '@angular/common/http';
 
 @NgModule({

@@ -1,13 +1,11 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
+import { HttpClient } from "@angular/common/http";
 import { CityModel } from "../models/city.model";
 import { JsonConvert, OperationMode, ValueCheckingMode } from "json2typescript";
 
-//https://api.openweathermap.org/data/2.5/weather?q=Koumac,nc&appid=846fe87f9f5971ad2a4cfe0cc866636d
-
 @Injectable()
 export class CityService {
+  //https://api.openweathermap.org/data/2.5/weather?q=Koumac,nc&appid=846fe87f9f5971ad2a4cfe0cc866636d
   private token = "846fe87f9f5971ad2a4cfe0cc866636d";
   private cityServiceUrl = `https://api.openweathermap.org/data/2.5/weather`;
   private jsonConvert = new JsonConvert();
@@ -20,7 +18,11 @@ export class CityService {
     this.jsonConvert.valueCheckingMode = ValueCheckingMode.DISALLOW_NULL; // never allow null
   }
 
-  getCity(cityName: string): Promise<CityModel> {
+  /**
+   * Retourne une ville à partir de son nom
+   * @param cityName 
+   */
+  getCityByName(cityName: string): Promise<CityModel> {
     var cityQuery = `?q=${cityName},nc&appid=${this.token}`;
     return this.http
       .get(this.cityServiceUrl + cityQuery)

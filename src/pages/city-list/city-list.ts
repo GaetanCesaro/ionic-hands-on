@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { CityModel } from "../../models/city.model";
 import { CityDetailsPage } from "../city-details/city-details";
-import { CityService } from "../../services/city.service";
+import { CityService } from "../../providers/city.provider";
 
 @Component({
   selector: "page-city-list",
@@ -87,7 +87,7 @@ export class CityListPage {
 
   private addCity(cityName: string) {
     this.cityService
-      .getCity(cityName)
+      .getCityByName(cityName)
       .then(city => this.cities.push(city))
       .catch(this.handleError);
   }
