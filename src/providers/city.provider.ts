@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { CityModel } from "../models/city.model";
 import { JsonConvert, OperationMode, ValueCheckingMode } from "json2typescript";
+import { GlobalErrorHandler } from "../app/error-handler";
 
 @Injectable()
 export class CityService {
@@ -11,7 +12,8 @@ export class CityService {
   private jsonConvert = new JsonConvert();
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private globalErrorHandler: GlobalErrorHandler
   ) {
     this.jsonConvert.operationMode = OperationMode.ENABLE; // print some debug data
     this.jsonConvert.ignorePrimitiveChecks = false; // don't allow assigning number to string etc.
@@ -28,21 +30,16 @@ export class CityService {
       .get(this.cityServiceUrl + cityQuery)
       .toPromise<any>()
       .then(city => {
-
         // Mapping JSON du cityModel
         let cityModel: CityModel;
+        
         try {
-            cityModel = this.jsonConvert.deserialize(city, CityModel);
+          cityModel = this.jsonConvert.deserialize(city, CityModel);
         } catch (e) {
-            this.handleError(e);
+          this.globalErrorHandler.handlePromiseError(e);
         } finally {
-            return cityModel;
+          return cityModel;
         }
-      })
-      .catch(this.handleError);
-  }
-
-  private handleError(error: any): Promise<any> {
-    return Promise.reject(error.message || error);
+      });
   }
 }

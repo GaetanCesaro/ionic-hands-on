@@ -88,11 +88,7 @@ export class CityListPage {
   private addCity(cityName: string) {
     this.cityService
       .getCityByName(cityName)
-      .then(city => this.cities.push(city))
-      .catch(this.handleError);
+      .then(city => this.cities.push(city));
   }
 
-  private handleError(error: any) {
-    console.error("An error occurred", error);
-  }
 }
