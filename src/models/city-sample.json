@@ -1,0 +1,42 @@
+{
+    "coord": {
+        "lon": 166.46,
+        "lat": -22.28
+    },
+    "weather": [
+        {
+            "id": 801,
+            "main": "Clouds",
+            "description": "few clouds",
+            "icon": "02d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 298.15,
+        "pressure": 1010,
+        "humidity": 65,
+        "temp_min": 298.15,
+        "temp_max": 298.15
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 7.7,
+        "deg": 130
+    },
+    "clouds": {
+        "all": 20
+    },
+    "dt": 1544421600,
+    "sys": {
+        "type": 1,
+        "id": 7344,
+        "message": 0.0072,
+        "country": "NC",
+        "sunrise": 1544378574,
+        "sunset": 1544427052
+    },
+    "id": 2139521,
+    "name": "Noumea",
+    "cod": 200
+}

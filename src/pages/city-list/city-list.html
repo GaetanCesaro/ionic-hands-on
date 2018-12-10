@@ -20,7 +20,7 @@
 
   <ion-card *ngFor="let city of cities" (click)="itemTapped($event, city)">
     <ion-card-header>
-      <ion-icon name="{{city.icon}}" item-left></ion-icon>
+      <ion-icon name="{{ city.icon }}" item-left></ion-icon>
       {{ city.title }}
     </ion-card-header>
     <ion-card-content>
@@ -29,10 +29,10 @@
       </div>
       <ion-row>
         <ion-col>
-          <ion-badge *ngFor="let dayforecast of city.forecast" item-right>
+          <ion-badge *ngFor="let forecast of city.forecasts" item-right>
             <div>
-              <ion-icon name="{{dayforecast.icon}}" item-left></ion-icon>
-              {{ dayforecast.day }}
+              <ion-icon name="{{ forecast.icon }}" item-left></ion-icon>
+              {{ forecast.icon }}
             </div>
           </ion-badge>
         </ion-col>
