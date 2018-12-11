@@ -32,22 +32,21 @@ export class CityService {
       .get(this.cityServiceUrl + apiMethod + cityQuery)
       .toPromise<any>()
       .then(city => {
-
-        //console.log(city);
-
         let cityModel: CityModel;
         
         try {
-          // Mapping JSON du cityModel
+          // GET sur Weather
           cityModel = this.jsonConvert.deserialize(city, CityModel);
 
-          // Récupération des forcasts
-          this.getForecastByName(cityName).then(forecasts => cityModel.forecasts = forecasts);
+          // GET sur Forecast
+          this.getForecastByName(cityName).then(forecasts => {
+            cityModel.forecasts = forecasts;
+          });
         } catch (e) {
           this.globalErrorHandler.handlePromiseError(e);
-        } finally {
-          return cityModel;
-        }
+        } 
+
+        return cityModel;
       });
   }
 
@@ -55,30 +54,26 @@ export class CityService {
    * Retourne une ville à partir de son nom
    * @param cityName 
    */
-  getForecastByName(cityName: string): Promise<ForecastModel[]> {
+  getForecastByName(cityName: String): Promise<ForecastModel[]> {
     var apiMethod = 'forecast';
     var cityQuery = `?q=${cityName},nc&appid=${this.token}`;
+
     return this.http
       .get(this.cityServiceUrl + apiMethod + cityQuery)
       .toPromise<any>()
       .then(forecasts => {
+        let forecastsModels = [];
 
-        console.log(forecasts);
-
-        let forecastsModels: ForecastModel[];
-
-        forecasts.list.forEach(forecast => {
-          let forecastModel: ForecastModel;
-          try {
-            forecastModel = this.jsonConvert.deserialize(forecast, ForecastModel);
-            console.log(forecastModel);
-          } catch (e) {
-            this.globalErrorHandler.handlePromiseError(e);
-          } finally {
+        try {
+          forecasts.list.forEach(forecast => {
+            let forecastModel: ForecastModel;
+            forecastModel = this.jsonConvert.deserialize(forecast, ForecastModel); 
             forecastsModels.push(forecastModel);
-          }
-        });
-
+          });
+        } catch (e) {
+          this.globalErrorHandler.handlePromiseError(e);
+        }
+        
         return forecastsModels;
       });
   }

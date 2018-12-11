@@ -1,23 +1,13 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Météo par communes</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <!--
-    ion-list>
-      <button ion-item *ngFor="let city of cities" (click)="itemTapped($event, city)">
-        <ion-icon name="{{city.icon}}" item-left></ion-icon>
-        {{city.title}}
-        <div class="item-note" item-right>
-          {{city.temperature}}
-        </div>
-      </button>
-    </ion-list
-  -->
-
   <ion-card *ngFor="let city of cities" (click)="itemTapped($event, city)">
     <ion-card-header>
       <ion-icon name="{{ city.icon }}" item-left></ion-icon>
@@ -27,15 +17,18 @@
       <div class="item-note" item-right>
         Aujourd'hui {{ city.temperature }}°c
       </div>
+      <br/>
       <ion-row>
-        <ion-col>
-          <ion-badge *ngFor="let forecast of city.forecasts" item-right>
-            <div>
-              <ion-icon name="{{ forecast.icon }}" item-left></ion-icon>
-              {{ forecast.icon }}
-            </div>
-          </ion-badge>
-        </ion-col>
+        <div *ngFor="let forecast of city.forecasts; let i=index">
+          <ion-col *ngIf="i<3">
+            <ion-badge item-right>
+              <div>
+                <ion-icon name="{{ forecast.icon }}" item-left></ion-icon>
+                {{ forecast.day }} {{ forecast.time }}
+              </div>
+            </ion-badge>
+          </ion-col>
+        </div>
       </ion-row>
     </ion-card-content>
   </ion-card>

@@ -89,7 +89,6 @@ export class CityListPage {
     this.cityService
       .getCityByName(cityName)
       .then(city => {
-        console.log(city);
         this.cities.push(city);
       }
       );
