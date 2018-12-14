@@ -14,3 +14,63 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.card-md {background: #EFEFEF;}
+
+.pic40 {
+    display: block;
+    overflow: hidden;
+    width: 40px;
+    height: 33px;
+    text-indent: -9999px;
+    background: url(../../assets/pictos/sprite-temps-40.svg) 0 0 no-repeat;
+}
+.pic40.day-sunny {background-position: 0 -32px;}
+.pic40.night-moon {background-position: 0 -64px;}
+.pic40.day-foggy {background-position: 0 -95px;}
+.pic40.night-foggy {background-position: 0 -129px;}
+.pic40.day-partly-cloudy {background-position: 0 -159px;}
+.pic40.night-partly-cloudy {background-position: 0 -192px;}
+.pic40.cloudy {background-position: 0 -224px;}
+.pic40.day-low-foggy {background-position: 0 -258px;}
+.pic40.night-low-foggy {background-position: 0 -288px;}
+.pic40.low-foggy {background-position: 0 -318px;}
+.pic40.very-low-foggy {background-position: 0 -351px;}
+.pic40.frosted {background-position: 0 -351px;}
+.pic40.hail {background-position: 0 -382px;}
+.pic40.day-rain-slippery {background-position: 0 -414px;}
+.pic40.night-rain-slippery {background-position: 0 -446px;}
+.pic40.rain-slippery {background-position: 0 -477px;}
+.pic40.day-rain {background-position: 0 -509px;}
+.pic40.night-rain {background-position: 0 -542px;}
+.pic40.rain {background-position: 0 -572px;}
+.pic40.day-heavy-rain {background-position: 0 -603px;}
+.pic40.night-heavy-rain {background-position: 0 -636px;}
+.pic40.heavy-rain {background-position: 0 -669px;}
+.pic40.dark-heavy-rain {background-position: 0 -669px;}
+.pic40.day-storm-rain {background-position: 0 -700px;}
+.pic40.night-storm-rain {background-position: 0 -730px;}
+.pic40.storm-rain {background-position: 0 -763px;}
+.pic40.day-snow {background-position: 0 -795px;}
+.pic40.night-snow {background-position: 0 -827px;}
+.pic40.snow {background-position: 0 -861px;}
+.pic40.day-rain-snow {background-position: 0 -892px;}
+.pic40.night-rain-snow {background-position: 0 -924px;}
+.pic40.rain-snow {background-position: 0 -956px;}
+.pic40.day-heavy-snow {background-position: 0 -988px;}
+.pic40.night-heavy-snow {background-position: 0 -1019px;}
+.pic40.heavy-snow {background-position: 0 -1051px;}
+.pic40.dark-heavy-snow {background-position: 0 -1081px;}
+.pic40.day-dark-storm-rain {background-position: 0 -1081px;}
+.pic40.night-dark-storm-rain {background-position: 0 -1111px;}
+.pic40.dark-storm-rain {background-position: 0 -1142px;}
+.pic40.day-dark-storm {background-position: 0 -1175px;}
+.pic40.night-dark-storm {background-position: 0 -1207px;}
+.pic40.dark-storm {background-position: 0 -1237px;}
+.pic40.day-dark-heavy-storm {background-position: 0 -1269px;}
+.pic40.night-dark-heavy-storm {background-position: 0 -1301px;}
+.pic40.dark-heavy-storm {background-position: 0 -1333px;}
+/*
+[class*="pic40 N_W1_25-N"], [class*="pic40 N_W1_27-N"] {background-position: 0 -1368px;}
+.pic40.J_W1_25-N_3, .pic40.N_W1_25-N_3, .pic40.J_W1_27-N_3, .pic40.N_W1_27-N_3 {background-position: 0 -1401px;}
+*/

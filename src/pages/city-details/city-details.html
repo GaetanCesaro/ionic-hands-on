@@ -11,8 +11,8 @@
   <div *ngIf="selectedCity">
     <h3 text-center>
       {{ selectedCity.title }}
-      <ion-icon [name]="selectedCity.icon"></ion-icon>
     </h3>
+    <div class="{{selectedCity.icon}}"></div>
     <h4 text-center>{{ selectedCity.temperature }}°c</h4>
   </div>
 </ion-content>

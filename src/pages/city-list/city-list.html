@@ -10,21 +10,30 @@
 <ion-content padding>
   <ion-card *ngFor="let city of cities" (click)="itemTapped($event, city)">
     <ion-card-header>
-      <ion-icon name="{{ city.icon }}" item-left></ion-icon>
-      {{ city.title }}
+      <!--ion-icon name="{{ city.icon }}" item-left></ion-icon-->
+      <div class="bg-grey">
+        <span>{{ city.title }}</span>   
+      </div>
     </ion-card-header>
     <ion-card-content>
       <div class="item-note" item-right>
-        Aujourd'hui {{ city.temperature }}°c
+        <dl>
+            <dt>Aujourd'hui {{city.temperature}}°c</dt>
+            <dd class="{{city.icon}}"></dd>
+          </dl>
       </div>
-      <br/>
+      <br />
       <ion-row>
         <div *ngFor="let forecast of city.forecasts; let i=index">
           <ion-col *ngIf="i<3">
             <ion-badge item-right>
               <div>
-                <ion-icon name="{{ forecast.icon }}" item-left></ion-icon>
-                {{ forecast.day }} {{ forecast.time }}
+                <!--ion-icon name="{{ forecast.icon }}" item-left></ion-icon-->
+                <dl>
+                  <dt>{{ forecast.day }}</dt>
+                  <dd class="{{forecast.icon}}"></dd>
+                  <dt>{{ forecast.time }}</dt>
+                </dl>
               </div>
             </ion-badge>
           </ion-col>

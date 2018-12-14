@@ -64,31 +64,31 @@ export class IconConverter implements JsonCustomConvert<String> {
 
         switch (weather[0].icon) {
             case "01d":
-                icon = "sunny";
+                icon = "day-sunny";         // sunny
+                break;
+
+            case "01n":
+                icon = "night-moon";        // moon
                 break;
 
             case "02d":
             case "03d":
-                icon = "partly-sunny";
-                break;
-
-            case "01n":
-            case "03n":
-                icon = "moon";
+            case "04d":
+                icon = "day-partly-cloudy";  // partly-sunny
                 break;
 
             case "02n":
+            case "03n":
             case "04n":
-                icon = "cloudy-night";
-                break;
-
-            case "04d":
-                icon = "cloudy";
+                icon = "night-partly-cloudy";    // cloudy-night
                 break;
 
             case "10d":
+                icon = "day-rain"; // rainy
+                break;
+
             case "10n":
-                icon = "rainy";
+                icon = "night-rain"; // rainy
                 break;
 
             case "xxx":
@@ -100,6 +100,6 @@ export class IconConverter implements JsonCustomConvert<String> {
                 break;
         }
 
-        return icon;
+        return "pic40 " + icon;
     }
 }
